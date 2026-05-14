@@ -1,0 +1,99 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[13].use[5]!./app/globals.sass ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1a1a2e;
+  background-image: url("/images/login-background.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.login-title {
+  color: white;
+  font-size: 3rem;
+  margin: 0;
+}
+
+/* Input fields */
+.login-form input[type=text],
+.login-form input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+}
+
+/* Additional links (e.g., forgot password) */
+.login-links {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.login-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
+
+.login-form {
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.reset-password-link {
+  margin-top: 0.5rem;
+}
+
+.reset-password-link a {
+  color: white;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.top {
+  flex: 0 1;
+  border-bottom: solid 1px var(--adm-color-border);
+}
+
+.body {
+  flex: 1 1;
+  overflow: auto;
+}
+
+.bottom {
+  flex: 0 1;
+  border-top: solid 1px var(--adm-color-border);
+}

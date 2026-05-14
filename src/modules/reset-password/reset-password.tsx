@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import cx from "classnames";
-import { Input, Button, Toast, Form, NavBar } from "antd-mobile";
+import { Input, Button, Toast, NavBar } from "antd-mobile";
 import { Footer } from "../framework";
-import "./reset-password.css";
+import "./reset-password.sass";
 
 const ResetPassword: React.FC = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");

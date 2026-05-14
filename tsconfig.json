@@ -1,14 +1,23 @@
 {
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"],
-    "compilerOptions": {
-        "jsx": "react",
-        "target": "es5",
-        "module": "commonjs",
-        "outDir": "public",
-        "rootDir": "src",
-        "strict": true,
-        "allowJs": true,
-        "esModuleInterop": true
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/*": ["./src/*"]
     }
+  },
+  "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "src/modules", "src/routes.ts", "src/index.js", "src/reportWebVitals.js"]
 }

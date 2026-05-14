@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { createBrowserHistory } from "history";
 import { SearchBar } from "antd-mobile";
-
+import { useSubmit } from "react-router-dom";
 import "./community-search.sass";
 
 const CommunitySearch: React.FC = () => {
-  const history = createBrowserHistory();
+  const submit = useSubmit();
   const [placeSearch, setPlaceSearch] = React.useState<any>(null);
 
   const initMapPlugin = (AMap: any, map: any) => {
@@ -13,15 +12,15 @@ const CommunitySearch: React.FC = () => {
       const placeSearch = new AMap.PlaceSearch({
         pageSize: 5,
         pageIndex: 1,
-        city: "广州",
         map: map,
         panel: "my-panel",
         autoFitView: true,
       });
       placeSearch.on("selectChanged", ({ selected }: any) => {
-        const { name } = selected;
-        console.log(name);
-        history.push("/product-list");
+        const {
+          data: { name },
+        } = selected;
+        submit({ name }, { method: "post" });
       });
       setPlaceSearch(placeSearch);
     });
@@ -36,7 +35,7 @@ const CommunitySearch: React.FC = () => {
         })
           .then((AMap: any) => {
             const map = new AMap.Map("map-container", {
-              zoom: 10,
+              zoom: 15,
               center: [position.coords.longitude, position.coords.latitude],
             });
             initMapPlugin(AMap, map);
@@ -47,6 +46,7 @@ const CommunitySearch: React.FC = () => {
       };
       loadAMap();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from "react-router";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import ProductList from "./modules/product-list/product-list";
 import Me from "./modules/me/me";
 import Login from "./modules/login/login";
@@ -11,6 +11,10 @@ import { login } from "./modules/login/login-api";
 import { selectCommunity } from "./modules/community-search/community-search-api";
 
 export default createBrowserRouter([
+  {
+    path: "/",
+    loader: () => redirect("/login"),
+  },
   {
     path: "/product-list",
     Component: ProductList,
@@ -31,7 +35,7 @@ export default createBrowserRouter([
       const username = formData.get("username");
       const password = formData.get("password");
       if (!username || !password) {
-        return { failed: "Please fill in all fields" };
+        return { failed: "请输入用户名和密码" };
       }
       // Perform login
       // If login fails, redirect to login page
@@ -44,7 +48,7 @@ export default createBrowserRouter([
           return redirect("/community-search");
         }
       }
-      return { failed: "Login failed" };
+      return { failed: "登录失败" };
     },
   },
   {
@@ -59,9 +63,7 @@ export default createBrowserRouter([
     path: "/community-search",
     Component: CommunitySearch,
     action: async ({ request }) => {
-      const { formData } = request;
-
-      const data = await formData();
+      const data = await request.formData();
       const name = data.get("name");
       if (!name) {
         return;
