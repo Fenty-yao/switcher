@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Form, useActionData } from "react-router-dom";
 import { Button, Input } from "antd-mobile";
-import { Form } from "react-router";
-import "./login.css";
+import { LoginActionResp } from "./types";
 
-const Login: React.FC = ({ actionData }: any) => {
+const Login: React.FC = () => {
+  const data = useActionData() as LoginActionResp;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,8 +39,8 @@ const Login: React.FC = ({ actionData }: any) => {
         </Button>
         <div className="reset-password-link">
           <a href="/reset-password">忘记密码?</a>
-          {actionData?.failed}
         </div>
+        <div className="error-message">{data?.failed}</div>
       </Form>
     </div>
   );

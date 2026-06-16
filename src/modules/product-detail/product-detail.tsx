@@ -5,13 +5,12 @@ import {
   Button,
   Space,
   Divider,
-  Footer,
   NavBar,
 } from "antd-mobile";
 import { HeartOutline } from "antd-mobile-icons";
 import { addCommentRequest } from "./product-detail-api";
-import "./product-detail.sass";
 import { Comment, Product } from "./types";
+import "./product-detail.sass";
 
 interface ProductDetailProps {
   product?: Product;
@@ -63,7 +62,9 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
   return (
     <div className="app">
-      <NavBar back="芳群园">MacBook Pro 2020</NavBar>
+      <NavBar onBack={() => window.history.back()} back="芳群园">
+        MacBook Pro 2020
+      </NavBar>
       <div className="body product-detail" style={{ padding: "16px" }}>
         <img src="http://localhost:8080/imgs/MacBookPro2020.jpeg" alt="" />
         <div>
@@ -139,8 +140,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           <HeartOutline fontSize="24px" />
         </div>
         <div className="footer-right">
-          <Button color="default">发私信</Button>
-          <Button color="primary">我想要</Button>
+          <Button color="primary">联系卖家</Button>
         </div>
       </div>
     </div>

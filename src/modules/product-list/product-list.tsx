@@ -1,9 +1,9 @@
 import React, { useCallback, useRef } from "react";
-import { Footer } from "../framework";
-import { Button, Card, NavBar, SearchBar } from "antd-mobile";
+import { Link } from "react-router-dom";
+import { Card, SearchBar } from "antd-mobile";
 import { UpOutline } from "antd-mobile-icons";
 import waterfall from "../utils/waterfall";
-
+import { Shell } from "../framework/shell";
 import "./product-list.sass";
 
 export const productList = [
@@ -192,28 +192,25 @@ const ProductList = () => {
   };
 
   return (
-    <div className="app">
-      <NavBar back="切换社区" right="添加社区">
-        芳群园
-      </NavBar>
-      <div className="body">
-        <div className="search-bar">
-          <SearchBar className="flex" placeholder="商品名称" />
-          <div className="filter-opts">
-            <div onClick={() => handleSort("createdAt")}>
-              时间
-              {sortKey === "createdAt" && <UpOutline />}
-            </div>
-            <div onClick={() => handleSort("price")}>
-              价格
-              {sortKey === "price" && <UpOutline />}
-            </div>
-            <div>筛选</div>
+    <Shell title="芳草园" backBtn={"切换社区"}>
+      <div className="search-bar">
+        <SearchBar className="flex" placeholder="商品名称" />
+        <div className="filter-opts">
+          <div onClick={() => handleSort("createdAt")}>
+            时间
+            {sortKey === "createdAt" && <UpOutline />}
           </div>
+          <div onClick={() => handleSort("price")}>
+            价格
+            {sortKey === "price" && <UpOutline />}
+          </div>
+          <div>筛选</div>
         </div>
+      </div>
 
-        <div className="product-list" ref={listRef}>
-          {sortedList.map((product) => (
+      <div className="product-list" ref={listRef}>
+        {sortedList.map((product) => (
+          <Link className="product-link" to="/product-detail">
             <Card className="product" title={product.title}>
               <img
                 onLoad={renderLayout}
@@ -226,12 +223,10 @@ const ProductList = () => {
               <div>{product.author}</div>
               <div className="price">{product.price}</div>
             </Card>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
-
-      <Footer />
-    </div>
+    </Shell>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Input, NavBar, Toast } from 'antd-mobile';
 import { register } from './register-api';
 import { redirect } from 'react-router';
-import './register.css';
+import './register.sass';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
